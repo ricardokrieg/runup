@@ -4,13 +4,17 @@ using Zenject;
 namespace RunUp.Player {
     public class InputController : MonoBehaviour {
         private Player _player;
+        private Canvas _menu;
 
         [Inject]
-        public void Init(Player player) {
+        public void Init(Player player, [Inject(Id = "Main Menu")] Canvas menu) {
             _player = player;
+            _menu = menu;
         }
         
         private void Update () {
+            if (_menu.isActiveAndEnabled) return;
+            
             foreach (var touch in Input.touches) {
                 HandleTouch(touch.fingerId, Camera.main.ScreenToWorldPoint(touch.position), touch.phase);
             }
