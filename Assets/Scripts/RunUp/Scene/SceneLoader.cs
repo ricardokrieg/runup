@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using RunUp.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,7 @@ namespace RunUp.Scene {
     public class SceneLoader : MonoBehaviour {
         private bool _loadingScene;
         private List<ISceneLoadObserver> _observers;
+        private Player.Player _player;
 
         public void Start() {
             _observers = new List<ISceneLoadObserver>();
@@ -16,6 +18,16 @@ namespace RunUp.Scene {
             if (_loadingScene) return;
             
             StartCoroutine(LoadSceneAsync(sceneName));
+        }
+
+        public void StartScene() {
+            if (_loadingScene) return;
+
+            var playerCamera = FindObjectOfType<Camera>();
+            var playerFollower = playerCamera.gameObject.AddComponent<Player.PlayerFollower>();
+            playerFollower.player = _player;
+            
+            _player.Activate();
         }
 
         public void Subscribe(ISceneLoadObserver observer) {
@@ -35,7 +47,8 @@ namespace RunUp.Scene {
             }
 
             Debug.Log("[SceneLoader] Instantiating Player");
-            Instantiate(Resources.Load<GameObject>("Prefabs/Player"));
+            var playerGameObject = Instantiate(Resources.Load<GameObject>("Prefabs/Player"));
+            _player = playerGameObject.GetComponent<Player.Player>();
             
             Debug.Log("[SceneLoader] Done");
             _loadingScene = false;

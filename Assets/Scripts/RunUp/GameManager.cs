@@ -19,6 +19,14 @@ namespace RunUp {
             _sceneLoader.LoadScene(_currentLevel);
         }
 
+        public void Start() {
+            Debug.Log("[GameManager] Start");
+            
+            // TODO what if this happens before the scene is loaded?
+            // should convert to Command pattern?
+            _sceneLoader.StartScene();
+        }
+
         public void OnCompleted() {
             Debug.Log("[GameManager] Scene loaded");
         }

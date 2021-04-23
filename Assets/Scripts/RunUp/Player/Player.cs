@@ -8,10 +8,14 @@ namespace RunUp.Player {
         private SplineFollower _splineFollower;
         
         public void Start() {
-            var splineComputer = GameObject.FindObjectsOfType<SplineComputer>().First();
+            var splineComputer = FindObjectOfType<SplineComputer>();
             
             _splineFollower = GetComponent<SplineFollower>();
             _splineFollower.spline = splineComputer;
+        }
+
+        public void Activate() {
+            GetComponent<PlayerController>().enabled = true;
         }
 
         public void StartMoving() {
