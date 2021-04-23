@@ -5,17 +5,11 @@ using Zenject;
 namespace RunUp.Token {
     public class TokenSpawner : MonoBehaviour {
         [SerializeField] private int quantity = 12;
-
         private SplineComputer _splineComputer;
-        private GameObject _tokenPrefab;
-        
+
         [Inject]
-        private void Init(
-            SplineComputer splineComputer,
-            [Inject(Id = "Token")]
-            GameObject tokenPrefab) {
+        public void Init(SplineComputer splineComputer) {
             _splineComputer = splineComputer;
-            _tokenPrefab = tokenPrefab;
         }
 
         public void Start() {
@@ -28,7 +22,7 @@ namespace RunUp.Token {
         }
 
         private void PlaceToken(Vector2 position) {
-            Instantiate(_tokenPrefab, position, Quaternion.identity);
+            Instantiate(Resources.Load<GameObject>("Prefabs/Token"), position, Quaternion.identity);
         }
     }   
 }

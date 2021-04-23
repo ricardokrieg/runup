@@ -1,3 +1,4 @@
+using System.Linq;
 using Dreamteck.Splines;
 using UnityEngine;
 using Zenject;
@@ -6,8 +7,9 @@ namespace RunUp.Player {
     public class Player : MonoBehaviour {
         private SplineFollower _splineFollower;
         
-        [Inject]
-        public void Init(SplineComputer splineComputer) {
+        public void Start() {
+            var splineComputer = GameObject.FindObjectsOfType<SplineComputer>().First();
+            
             _splineFollower = GetComponent<SplineFollower>();
             _splineFollower.spline = splineComputer;
         }
