@@ -29,12 +29,24 @@ namespace RunUp.Player {
         private void HandleTouch(int touchFingerId, Vector3 touchPosition, TouchPhase touchPhase) {
             switch (touchPhase) {
                 case TouchPhase.Began:
+                    PlayAnimation(touchPosition);
+                    
                     _player.StartMoving();
                     break;
                 case TouchPhase.Ended:
                     _player.StopMoving();
                     break;
             }
+        }
+
+        private void PlayAnimation(Vector3 touchPosition) {
+            Debug.Log("[PlayerController] PlayAnimation " + touchPosition);
+            var position = new Vector3(touchPosition.x, touchPosition.y, -2f);
+            
+            var animationPrefab = Resources.Load<GameObject>("Prefabs/SoftBodySlam");
+            var animationGameObject = Instantiate(animationPrefab, position, Quaternion.identity);
+            
+            Destroy(animationGameObject, 1f);
         }
     }    
 }
