@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8772359479677131775}
   - component: {fileID: 3622538114835172778}
   - component: {fileID: -4936804888212953502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: StraightLeftObstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -70,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 75
+  m_SortingLayerID: 929961845
+  m_SortingLayer: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.4528302, g: 0.13029547, b: 0.13029547, a: 1}
   m_FlipX: 0
@@ -120,7 +120,7 @@ Animator:
   m_GameObject: {fileID: 5652323253927345509}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6636a80d5e84647a5ae52c03f8093a68, type: 2}
+  m_Controller: {fileID: 9100000, guid: 21a0fa982c9b44d56b6a11864f7f05e7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

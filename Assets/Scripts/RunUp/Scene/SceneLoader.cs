@@ -26,14 +26,28 @@ namespace RunUp.Scene {
             var playerCamera = FindObjectOfType<Camera>();
             var playerFollower = playerCamera.gameObject.AddComponent<Player.PlayerFollower>();
             playerFollower.player = _player;
-            
-            _player.Activate();
+
+            StartCoroutine(PlacePlayer());
         }
 
         public void Subscribe(ISceneLoadObserver observer) {
             if (!_observers.Contains(observer)) {
                 _observers.Add(observer);
             }
+        }
+
+        private IEnumerator PlacePlayer() {
+            yield return new WaitForSeconds(1f);
+            
+            var position = _player.transform.position;
+            var rotation = new Quaternion(0, 0, 0, 0);
+            
+            var animationPrefab = Resources.Load<GameObject>("Prefabs/HeartPoof");
+            var animationGameObject = Instantiate(animationPrefab, position, rotation);
+            Destroy(animationGameObject, 2f);
+            
+            _player.gameObject.SetActive(true);
+            _player.Activate();
         }
         
         private IEnumerator LoadSceneAsync(string sceneName) {
@@ -49,6 +63,7 @@ namespace RunUp.Scene {
             Debug.Log("[SceneLoader] Instantiating Player");
             var playerGameObject = Instantiate(Resources.Load<GameObject>("Prefabs/Player"));
             _player = playerGameObject.GetComponent<Player.Player>();
+            playerGameObject.SetActive(false);
             
             Debug.Log("[SceneLoader] Done");
             _loadingScene = false;

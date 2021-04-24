@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Token
   - Obstacle
+  - Missile
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Obstacle
   - 
   - 
   - 
@@ -42,4 +43,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 953523777
+    locked: 0
+  - name: Road
+    uniqueID: 2701909099
+    locked: 0
+  - name: Token
+    uniqueID: 4256930007
+    locked: 0
+  - name: Obstacle
+    uniqueID: 929961845
+    locked: 0
+  - name: FX
+    uniqueID: 418809297
     locked: 0
