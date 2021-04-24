@@ -24,42 +24,13 @@ namespace RunUp {
                 .NonLazy();
 
             Container
-                .Bind<AudioSource>()
-                .FromComponentInHierarchy()
-                .AsSingle();
-            
-            // Container
-            //     .Bind<Canvas>()
-            //     .WithId("Main Menu")
-            //     .FromComponentInNewPrefabResource("Prefabs/Menu")
-            //     .AsSingle()
-            //     .NonLazy();
-            //
-            // Container
-            //     .Bind<GameObject>()
-            //     .WithId("Claim Screen")
-            //     .FromResource("Prefabs/ClaimScreen");
-            
-            Container
-                .Bind<AudioService>()
+                .BindInterfacesAndSelfTo<AudioService>()
                 .AsSingle()
                 .NonLazy();
             
             Container
                 .Bind<Audio.AudioSettings>()
                 .AsSingle();
-
-            Container
-                .Bind<AudioClip>()
-                .WithId("Main Theme")
-                .FromResource("Sounds/Casual Title PIANO LOOP na Casual Game Music")
-                .AsSingle();
-
-            // Container
-            //     .Bind<Player.Player>()
-            //     .FromComponentInNewPrefabResource("Prefabs/Player")
-            //     .AsSingle()
-            //     .NonLazy();
         }
     }
 }
