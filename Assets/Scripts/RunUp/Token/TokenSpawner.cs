@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Dreamteck;
 using Dreamteck.Splines;
 using UnityEngine;
 using Zenject;
@@ -8,17 +10,22 @@ namespace RunUp.Token {
 
         public void Start() {
             var splineComputer = FindObjectOfType<SplineComputer>();
-            
+
+            var positions = new List<Vector3>();
             var step = 1f / quantity;
             for (var i = step; i < 1; i += step) {
-                var position = splineComputer.EvaluatePosition(i);
+                positions.Add(splineComputer.EvaluatePosition(i));
+            }
 
-                PlaceToken(new Vector3(position.x, position.y, -0.1f));
+            positions.RemoveAt(0);
+            positions.RemoveAt(positions.Count - 1);
+            foreach (var position in positions.ToArray()) {
+                PlaceToken(position);
             }
         }
 
         private void PlaceToken(Vector3 position) {
-            Instantiate(Resources.Load<GameObject>("Prefabs/HeartToken"), position, Quaternion.identity);
+            Instantiate(Resources.Load<GameObject>("Prefabs/Token"), position, Quaternion.identity);
         }
     }   
 }

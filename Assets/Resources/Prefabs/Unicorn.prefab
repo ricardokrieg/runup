@@ -580,7 +580,7 @@ MonoBehaviour:
   preserveUniformSpeedWithOffset: 0
   _followSpeed: 2
   _followDuration: 10
-  _startPosition: 0.8600000143051147
+  _startPosition: 0
   _speedModifier:
     blend: 1
     keys: []
