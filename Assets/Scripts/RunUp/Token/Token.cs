@@ -1,12 +1,11 @@
+using RunUp.Scene;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Zenject;
 
 namespace RunUp.Token {
     public class Token : MonoBehaviour {
         [SerializeField] private bool final;
         [SerializeField] private string nextLevel;
-    
+        
         public void Collect() {
             Debug.Log(final ? "final token collected" : "token collected");
 
@@ -20,7 +19,8 @@ namespace RunUp.Token {
             Destroy(animationGameObject, 1f);
 
             if (final && nextLevel != "") {
-                SceneManager.LoadScene(nextLevel);    
+                var sceneLoader = FindObjectOfType<SceneLoader>();
+                sceneLoader.LoadScene(nextLevel);
             }
         }
     }   

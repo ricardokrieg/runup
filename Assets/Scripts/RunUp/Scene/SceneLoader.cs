@@ -9,18 +9,26 @@ namespace RunUp.Scene {
         private bool _loadingScene;
         private List<ISceneLoadObserver> _observers;
         private Player.Player _player;
+        private List<string> _sceneNames;
 
         public void Start() {
             ListSceneNames();
             
             _observers = new List<ISceneLoadObserver>();
+            _sceneNames = new List<string>();
         }
         
         public void LoadScene(string sceneName) {
             Debug.Log("[SceneLoader] Load Scene " + sceneName);
             
             if (_loadingScene) return;
-            if (SceneIsLoaded(sceneName)) return;
+
+            AddScene(sceneName);
+            if (SceneIsLoaded(sceneName)) {
+                InstantiatePlayer();
+                NotifyObservers();
+                return;
+            }
             
             StartCoroutine(LoadSceneAsync(sceneName));
         }
@@ -56,6 +64,19 @@ namespace RunUp.Scene {
         
         private IEnumerator LoadSceneAsync(string sceneName) {
             _loadingScene = true;
+            
+            Debug.Log("[SceneLoader] Unloading Scenes");
+            foreach (var loadedSceneName in _sceneNames.ToArray()) {
+                if (loadedSceneName == sceneName) continue;
+                
+                Debug.Log("[SceneLoader] Unloading Scene async " + loadedSceneName);
+                var asyncUnload = SceneManager.UnloadSceneAsync(loadedSceneName);
+
+                while (!asyncUnload.isDone) {
+                    yield return null;
+                }
+            }
+            Debug.Log("[SceneLoader] Unloaded all Scenes");
 
             Debug.Log("[SceneLoader] Loading Scene async " + sceneName);
             var asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
@@ -64,16 +85,19 @@ namespace RunUp.Scene {
                 yield return null;
             }
 
-            Debug.Log("[SceneLoader] Instantiating Player");
-            var playerGameObject = Instantiate(Resources.Load<GameObject>("Prefabs/Unicorn"));
-            _player = playerGameObject.GetComponent<Player.Player>();
-            playerGameObject.SetActive(false);
-            
+            InstantiatePlayer();
+
             Debug.Log("[SceneLoader] Done");
             ListSceneNames();
             _loadingScene = false;
 
             NotifyObservers();
+        }
+
+        private void AddScene(string sceneName) {
+            if (_sceneNames.Contains(sceneName)) return;
+            
+            _sceneNames.Add(sceneName);
         }
         
         private void ListSceneNames() {
@@ -107,6 +131,15 @@ namespace RunUp.Scene {
             }
 
             _observers.Clear();
+        }
+
+        private void InstantiatePlayer() {
+            Debug.Log("[SceneLoader] Instantiating Player");
+            
+            var playerGameObject = Instantiate(Resources.Load<GameObject>("Prefabs/Unicorn"));
+            _player = playerGameObject.GetComponent<Player.Player>();
+            
+            playerGameObject.SetActive(false);
         }
     }
 }
