@@ -37,13 +37,12 @@ namespace RunUp.Scene {
         }
 
         private IEnumerator PlacePlayer() {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.2f);
             
             var position = _player.transform.position;
-            var rotation = new Quaternion(0, 0, 0, 0);
             
             var animationPrefab = Resources.Load<GameObject>("Prefabs/HeartPoof");
-            var animationGameObject = Instantiate(animationPrefab, position, rotation);
+            var animationGameObject = Instantiate(animationPrefab, position, Quaternion.identity);
             Destroy(animationGameObject, 2f);
             
             _player.gameObject.SetActive(true);
@@ -61,7 +60,7 @@ namespace RunUp.Scene {
             }
 
             Debug.Log("[SceneLoader] Instantiating Player");
-            var playerGameObject = Instantiate(Resources.Load<GameObject>("Prefabs/Player"));
+            var playerGameObject = Instantiate(Resources.Load<GameObject>("Prefabs/Unicorn"));
             _player = playerGameObject.GetComponent<Player.Player>();
             playerGameObject.SetActive(false);
             

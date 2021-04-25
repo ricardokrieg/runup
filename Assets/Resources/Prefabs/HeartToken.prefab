@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 239210612061760840}
   - component: {fileID: 8540410775822471853}
+  - component: {fileID: -7719187489228005496}
   m_Layer: 0
   m_Name: HeartToken
   m_TagString: Token
@@ -42,12 +43,26 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.06}
   serializedVersion: 2
   m_Radius: 0.08
+--- !u!114 &-7719187489228005496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239210612061760841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537683c5a624b4cfd80b3bbc142ca182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  final: 0
+  nextLevel: 
 --- !u!1001 &239210611897387313
 PrefabInstance:
   m_ObjectHideFlags: 0

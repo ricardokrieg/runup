@@ -13,13 +13,11 @@ namespace RunUp.Token {
             for (var i = step; i < 1; i += step) {
                 var position = splineComputer.EvaluatePosition(i);
 
-                PlaceToken(position);
+                PlaceToken(new Vector3(position.x, position.y, -0.1f));
             }
         }
 
         private void PlaceToken(Vector3 position) {
-            // Instantiate(Resources.Load<GameObject>("Prefabs/Token"), position, Quaternion.identity);
-            var rotation = new Quaternion(0, 0, 0, 0);
             Instantiate(Resources.Load<GameObject>("Prefabs/HeartToken"), position, Quaternion.identity);
         }
     }   
