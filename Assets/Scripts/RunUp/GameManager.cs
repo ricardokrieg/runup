@@ -14,7 +14,7 @@ namespace RunUp {
         }
 
         public void Initialize() {
-            Debug.Log("[GameManager] Loading scene");
+            Debug.Log("[GameManager] Loading scene " + _currentLevel);
             _sceneLoader.Subscribe(this);
             _sceneLoader.LoadScene(_currentLevel);
         }

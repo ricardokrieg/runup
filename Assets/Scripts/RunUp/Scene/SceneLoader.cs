@@ -11,11 +11,16 @@ namespace RunUp.Scene {
         private Player.Player _player;
 
         public void Start() {
+            ListSceneNames();
+            
             _observers = new List<ISceneLoadObserver>();
         }
         
         public void LoadScene(string sceneName) {
+            Debug.Log("[SceneLoader] Load Scene " + sceneName);
+            
             if (_loadingScene) return;
+            if (SceneIsLoaded(sceneName)) return;
             
             StartCoroutine(LoadSceneAsync(sceneName));
         }
@@ -52,7 +57,7 @@ namespace RunUp.Scene {
         private IEnumerator LoadSceneAsync(string sceneName) {
             _loadingScene = true;
 
-            Debug.Log("[SceneLoader] Loading scene async");
+            Debug.Log("[SceneLoader] Loading Scene async " + sceneName);
             var asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
             while (!asyncLoad.isDone) {
@@ -65,9 +70,33 @@ namespace RunUp.Scene {
             playerGameObject.SetActive(false);
             
             Debug.Log("[SceneLoader] Done");
+            ListSceneNames();
             _loadingScene = false;
 
             NotifyObservers();
+        }
+        
+        private void ListSceneNames() {
+            Debug.Log("[SceneLoader] List of scenes:");
+            
+            for (var i = 0; i < SceneManager.sceneCount; ++i) {
+                var scene = SceneManager.GetSceneAt(i);
+                var output = scene.name;
+                output += scene.isLoaded ? " (Loaded, " : " (Not Loaded, ";
+                output += scene.isDirty ? "Dirty, " : "Clean, ";
+                output += scene.buildIndex >= 0 ? "in build)" : "NOT in build)";
+                
+                Debug.Log("[SceneLoader] " + output);
+            }
+        }
+
+        private bool SceneIsLoaded(string sceneName) {
+            for (var i = 0; i < SceneManager.sceneCount; ++i) {
+                var scene = SceneManager.GetSceneAt(i);
+                if (scene.name == sceneName) return true;
+            }
+
+            return false;
         }
 
         private void NotifyObservers() {
