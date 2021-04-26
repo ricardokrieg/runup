@@ -3,10 +3,7 @@ using UnityEngine;
 
 namespace RunUp.Obstacle {
     public class ObstacleShadow : MonoBehaviour {
-        [SerializeField] private Color shadowColor;
-        [SerializeField] private Material shadowMaterial;
-        
-        private Vector2 _offset = new Vector2(0.1f, -0.1f);
+        private readonly Vector2 _offset = new Vector2(0.1f, -0.1f);
         
         private Transform _transformShadow;
         private SpriteRenderer _rendererShadow;
@@ -28,8 +25,8 @@ namespace RunUp.Obstacle {
             _rendererShadow.sprite = _rendererCaster.sprite;
             _rendererShadow.sortingLayerName = _rendererCaster.sortingLayerName;
             _rendererShadow.sortingOrder = _rendererCaster.sortingOrder - 1;
-            _rendererShadow.material = shadowMaterial;
-            _rendererShadow.color = shadowColor;
+            _rendererShadow.material = _rendererCaster.material;
+            _rendererShadow.color = new Color(0, 0, 0, 100);
         }
 
         public void LateUpdate() {
