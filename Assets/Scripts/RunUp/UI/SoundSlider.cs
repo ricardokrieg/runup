@@ -13,7 +13,10 @@ namespace RunUp.UI {
         }
         
         void Start() {
-            GetComponent<Slider>().onValueChanged.AddListener(OnValueChanged);
+            var slider = GetComponent<Slider>();
+
+            slider.onValueChanged.AddListener(OnValueChanged);
+            slider.value = _audioSettings.SoundValue();
         }
 
         private void OnValueChanged(float value) {

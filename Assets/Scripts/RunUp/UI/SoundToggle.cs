@@ -13,7 +13,10 @@ namespace RunUp.UI {
         }
         
         void Start() {
-            GetComponent<Toggle>().onValueChanged.AddListener(OnValueChanged);
+            var toggle = GetComponent<Toggle>();
+
+            toggle.onValueChanged.AddListener(OnValueChanged);
+            toggle.isOn = _audioSettings.IsSoundOn();
         }
 
         private void OnValueChanged(bool isOn) {

@@ -35,7 +35,7 @@ namespace RunUp {
                 .NonLazy();
             
             Container
-                .Bind<Audio.AudioSettings>()
+                .BindInterfacesAndSelfTo<Audio.AudioSettings>()
                 .AsSingle();
         }
     }
