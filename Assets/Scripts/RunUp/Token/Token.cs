@@ -2,13 +2,11 @@ using RunUp.Scene;
 using UnityEngine;
 
 namespace RunUp.Token {
-    public class Token : MonoBehaviour {
+    public class Token : MonoBehaviour, Scene.ISceneLoadObserver {
         [SerializeField] private bool final;
         [SerializeField] private string nextLevel;
         
         public void Collect() {
-            Debug.Log(final ? "final token collected" : "token collected");
-
             var position = gameObject.transform.position;
             var rotation = new Quaternion(0, 90, 0, 0);
             
@@ -20,8 +18,15 @@ namespace RunUp.Token {
 
             if (final && nextLevel != "") {
                 var sceneLoader = FindObjectOfType<SceneLoader>();
+                
+                sceneLoader.Subscribe(this);
                 sceneLoader.LoadScene(nextLevel);
             }
+        }
+
+        public void OnCompleted() {
+            var playerManager = FindObjectOfType<Player.PlayerManager>();
+            playerManager.StartPlayer();
         }
     }   
 }

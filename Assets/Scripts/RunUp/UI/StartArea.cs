@@ -16,7 +16,7 @@ namespace RunUp.UI {
             base.OnPointerDown(eventData);
             
             gameObject.GetComponentInParent<Canvas>().enabled = false;
-            _gameManager.Start();
+            _gameManager.StartGame();
         }
     }
 }

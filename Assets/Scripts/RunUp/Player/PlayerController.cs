@@ -42,8 +42,6 @@ namespace RunUp.Player {
         }
 
         private void HandleTouch(int touchFingerId, Vector3 touchPosition, TouchPhase touchPhase) {
-            Debug.Log("[PlayerController] HandleTouch " + touchPhase);
-            
             switch (touchPhase) {
                 case TouchPhase.Began:
                     PlayTouchAnimation(touchPosition);

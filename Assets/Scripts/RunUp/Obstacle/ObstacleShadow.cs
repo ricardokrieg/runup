@@ -26,7 +26,7 @@ namespace RunUp.Obstacle {
             _rendererShadow.sortingLayerName = _rendererCaster.sortingLayerName;
             _rendererShadow.sortingOrder = _rendererCaster.sortingOrder - 1;
             _rendererShadow.material = _rendererCaster.material;
-            _rendererShadow.color = new Color(0, 0, 0, 100);
+            _rendererShadow.color = new Color(0, 0, 0, 0.4f);
         }
 
         public void LateUpdate() {

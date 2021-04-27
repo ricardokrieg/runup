@@ -12,6 +12,12 @@ namespace RunUp {
                 .NonLazy();
             
             Container
+                .Bind<Player.PlayerManager>()
+                .FromNewComponentOnNewGameObject()
+                .AsSingle()
+                .NonLazy();
+            
+            Container
                 .Bind<Scene.SceneLoader>()
                 .FromNewComponentOnNewGameObject()
                 .AsSingle()

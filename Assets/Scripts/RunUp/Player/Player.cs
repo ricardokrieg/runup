@@ -13,12 +13,7 @@ namespace RunUp.Player {
             _splineFollower = GetComponent<SplineFollower>();
             _splineFollower.spline = splineComputer;
             
-            // _splineFollower.SetPercent(_splineFollower.spline.Project(_splineFollower.transform.position).percent);
             var startPosition = splineComputer.EvaluatePosition(0);
-
-            // transform.position = startPosition;
-            // transform.rotation = new Quaternion(0.5f, 0, 0, 0);
-            // Restart();
         }
 
         public void Activate() {
@@ -34,6 +29,8 @@ namespace RunUp.Player {
         }
 
         public void Restart() {
+            if (!_splineFollower) return;
+            
             _splineFollower.Restart();
         }
     } 
