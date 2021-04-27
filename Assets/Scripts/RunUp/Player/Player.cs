@@ -6,14 +6,21 @@ using Zenject;
 namespace RunUp.Player {
     public class Player : MonoBehaviour {
         private SplineFollower _splineFollower;
+        private Animator _animator;
         
         public void Start() {
             var splineComputer = FindObjectOfType<SplineComputer>();
             
             _splineFollower = GetComponent<SplineFollower>();
             _splineFollower.spline = splineComputer;
+
+            _animator = GetComponent<Animator>();
             
-            var startPosition = splineComputer.EvaluatePosition(0);
+            if (_splineFollower.follow) {
+                StartMoving();
+            } else {
+                StopMoving();  
+            }
         }
 
         public void Activate() {
@@ -22,10 +29,12 @@ namespace RunUp.Player {
 
         public void StartMoving() {
             _splineFollower.follow = true;
+            _animator.SetInteger("animation", 9);
         }
         
         public void StopMoving() {
             _splineFollower.follow = false;
+            _animator.SetInteger("animation", 1);
         }
 
         public void Restart() {
