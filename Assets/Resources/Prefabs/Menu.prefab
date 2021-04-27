@@ -650,7 +650,6 @@ GameObject:
   - component: {fileID: 55537051120121473}
   - component: {fileID: 4326422325654205938}
   - component: {fileID: 7379969039629524943}
-  - component: {fileID: 5533844857306405210}
   - component: {fileID: 3647091050625954937}
   m_Layer: 5
   m_Name: StartArea
@@ -716,7 +715,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5533844857306405210
+--- !u!114 &3647091050625954937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -725,7 +724,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5207825188793211519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: dd365d3ae9e645339523c29a73a46650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -756,22 +755,10 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 7379969039629524943}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3647091050625954937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5207825188793211519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd365d3ae9e645339523c29a73a46650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5475172754384201251
 GameObject:
   m_ObjectHideFlags: 0
