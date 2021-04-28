@@ -533,6 +533,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinalToken
       objectReference: {fileID: 0}
+    - target: {fileID: 8409751671035784986, guid: c00a4843af7b044949f8fa4bb5bf9a1a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c00a4843af7b044949f8fa4bb5bf9a1a, type: 3}
 --- !u!1 &526531159 stripped

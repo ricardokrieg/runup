@@ -49,6 +49,8 @@ namespace RunUp.Level {
             try {
                 var reader = QuickSaveReader.Create("RunUp");
                 level = reader.Read<int>("CurrentLevel");
+                
+                Debug.Log("[LevelManager] LoadSavedLevel loaded " + level);
             } catch (QuickSaveException e) {
                 Debug.LogWarning(e);
             }
@@ -57,6 +59,8 @@ namespace RunUp.Level {
         }
 
         private void SaveLevel() {
+            Debug.Log("[LevelManager] SaveLevel " + _currentLevel);
+            
             var writer = QuickSaveWriter.Create("RunUp");
             writer.Write("CurrentLevel", _currentLevel);
             writer.Commit();

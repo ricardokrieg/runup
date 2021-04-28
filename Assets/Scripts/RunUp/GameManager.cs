@@ -2,7 +2,7 @@ using UnityEngine;
 using Zenject;
 
 namespace RunUp {
-    public class GameManager : IInitializable, Scene.ISceneLoadObserver, Level.ILevelChangeObserver {
+    public class GameManager : IInitializable, Scene.ISceneLoadObserver, Level.ILevelChangeObserver, Token.ICollectObserver {
         private Level.ILevelManager _levelManager;
         private Scene.SceneLoader _sceneLoader;
         private Player.PlayerManager _playerManager;
@@ -50,11 +50,29 @@ namespace RunUp {
         public void OnSceneLoaded(string sceneName) {
             Debug.Log("[GameManager] OnSceneLoaded " + sceneName);
 
+            if (sceneName == "Win") return;
+            
             if (_gameStarted) {
                 _playerManager.StartPlayer();
             } else {
                 _playerManager.InstantiatePlayer();
             }
+        }
+
+        public void OnCollect(Vector2 position, bool isFinal) {
+            Debug.Log("[GameManager] OnCollect " + position + " " + isFinal);
+
+            if (isFinal) {
+                // _levelManager.NextLevel();
+                Win();
+            }
+        }
+
+        private void Win() {
+            // TODO disable MainCamera (Camera, Audio Listener)
+            // TODO disable Main Menu (EventSystem)
+            
+            _sceneLoader.LoadScene("Win");
         }
     }
 }
