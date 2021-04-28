@@ -8,6 +8,14 @@ namespace RunUp.Token {
     public class TokenSpawner : MonoBehaviour {
         [SerializeField] private int quantity = 12;
 
+        private Token.Factory _tokenFactory;
+        
+        [Inject]
+        public void Init(Token.Factory tokenFactory) {
+            Debug.Log("[TokenSpawner] Init");
+            _tokenFactory = tokenFactory;
+        }
+        
         public void Start() {
             var splineComputer = FindObjectOfType<SplineComputer>();
 
@@ -25,7 +33,8 @@ namespace RunUp.Token {
         }
 
         private void PlaceToken(Vector3 position) {
-            Instantiate(Resources.Load<GameObject>("Prefabs/Token"), position, Quaternion.identity);
+            var token = _tokenFactory.Create("Prefabs/Token");
+            token.transform.position = position;
         }
     }   
 }

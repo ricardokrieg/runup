@@ -7,11 +7,6 @@ namespace RunUp.Player {
         
         private bool _follow;
 
-        // [Inject]
-        // public void Init(Player player) {
-        //     _player = player;
-        // }
-        
         private void LateUpdate() {
             if (_follow) {
                 transform.position = Position();    

@@ -2,36 +2,59 @@ using UnityEngine;
 using Zenject;
 
 namespace RunUp {
-    public class GameManager : IInitializable, Scene.ISceneLoadObserver {
-        private string _currentLevel;
+    public class GameManager : IInitializable, Scene.ISceneLoadObserver, Level.ILevelChangeObserver {
+        private Level.ILevelManager _levelManager;
         private Scene.SceneLoader _sceneLoader;
         private Player.PlayerManager _playerManager;
+
+        private bool _gameStarted;
         
         [Inject]
         private void Init(
-            Level.ILevelProvider levelProvider,
+            Level.ILevelManager levelManager,
             Scene.SceneLoader sceneLoader,
             Player.PlayerManager playerManager
         ) {
-            _currentLevel = levelProvider.CurrentLevel();
+            _levelManager = levelManager;
             _sceneLoader = sceneLoader;
             _playerManager = playerManager;
         }
 
         public void Initialize() {
-            Debug.Log("[GameManager] Loading scene " + _currentLevel);
-            _sceneLoader.Subscribe(this);
-            _sceneLoader.LoadScene(_currentLevel);
+            Debug.Log("[GameManager] Initialize");
+            Debug.Log("[GameManager] persistentDataPath: " + Application.persistentDataPath);
+            
+            _sceneLoader.Initialize();
+            
+            _levelManager.SubscribeToLevelChange(this);
+            _levelManager.LoadCurrentLevel();
         }
 
-        public void OnCompleted() {
-            Debug.Log("[GameManager] Scene loaded");
+        public void StartGame() {
+            _gameStarted = true;
             
-            _playerManager.InstantiatePlayer();
+            // TODO use coroutine, because this may be called before player is instantiated
+            _playerManager.StartPlayer(true);
+        }
+
+        public void OnLevelChange(int previousLevel, int nextLevel) {
+            Debug.Log("[GameManager] OnLevelChange " + previousLevel + " -> " + nextLevel);
+            
+            var level = "Level " + nextLevel;
+            Debug.Log("[GameManager] Loading scene " + level);
+            
+            _sceneLoader.SubscribeToSceneLoad(this);
+            _sceneLoader.LoadScene(level);
         }
         
-        public void StartGame() {
-            _playerManager.StartPlayer(true);
+        public void OnSceneLoaded(string sceneName) {
+            Debug.Log("[GameManager] OnSceneLoaded " + sceneName);
+
+            if (_gameStarted) {
+                _playerManager.StartPlayer();
+            } else {
+                _playerManager.InstantiatePlayer();
+            }
         }
     }
 }

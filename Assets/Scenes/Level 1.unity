@@ -535,6 +535,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c00a4843af7b044949f8fa4bb5bf9a1a, type: 3}
+--- !u!1 &526531159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8409751671035784986, guid: c00a4843af7b044949f8fa4bb5bf9a1a, type: 3}
+  m_PrefabInstance: {fileID: 526531158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &526531160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526531159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 1
 --- !u!1001 &745384544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -742,6 +760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1448717757}
   - component: {fileID: 1448717758}
+  - component: {fileID: 1448717759}
   m_Layer: 0
   m_Name: TokenSpawner
   m_TagString: Untagged
@@ -776,6 +795,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quantity: 12
+--- !u!114 &1448717759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448717756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 1
 --- !u!1 &1510909975
 GameObject:
   m_ObjectHideFlags: 0

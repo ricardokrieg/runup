@@ -7,7 +7,7 @@ namespace RunUp.Player {
             
             Debug.Log("Collided with obstacle");
             var player = GetComponent<Player>();
-            player.Restart();
+            player.Start();
         }
     }   
 }

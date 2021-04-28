@@ -1,4 +1,3 @@
-using System.Linq;
 using Dreamteck.Splines;
 using UnityEngine;
 using Zenject;
@@ -13,6 +12,7 @@ namespace RunUp.Player {
             
             _splineFollower = GetComponent<SplineFollower>();
             _splineFollower.spline = splineComputer;
+            _splineFollower.Restart();
 
             _animator = GetComponent<Animator>();
             
@@ -37,10 +37,7 @@ namespace RunUp.Player {
             _animator.SetInteger("animation", 1);
         }
 
-        public void Restart() {
-            if (!_splineFollower) return;
-            
-            _splineFollower.Restart();
+        public class Factory : PlaceholderFactory<string, Player> {
         }
     } 
 }

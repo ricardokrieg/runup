@@ -1,13 +1,17 @@
-using Dreamteck.Splines;
 using RunUp.Audio;
-using UnityEngine;
 using Zenject;
 
 namespace RunUp {
-    public class GameInstaller : MonoInstaller {
+    public class GlobalInstaller : MonoInstaller {
         public override void InstallBindings() {
             Container
                 .BindInterfacesAndSelfTo<GameManager>()
+                .AsSingle()
+                .NonLazy();
+            
+            Container
+                .Bind<Level.ILevelManager>()
+                .To<Level.LevelManager>()
                 .AsSingle()
                 .NonLazy();
             
@@ -24,12 +28,6 @@ namespace RunUp {
                 .NonLazy();
             
             Container
-                .Bind<Level.ILevelProvider>()
-                .To<Level.LevelManager>()
-                .AsSingle()
-                .NonLazy();
-
-            Container
                 .BindInterfacesAndSelfTo<AudioService>()
                 .AsSingle()
                 .NonLazy();
@@ -37,6 +35,14 @@ namespace RunUp {
             Container
                 .BindInterfacesAndSelfTo<Audio.AudioSettings>()
                 .AsSingle();
+            
+            Container
+                .BindFactory<string, Token.Token, Token.Token.Factory>()
+                .FromFactory<PrefabResourceFactory<Token.Token>>();
+            
+            Container
+                .BindFactory<string, Player.Player, Player.Player.Factory>()
+                .FromFactory<PrefabResourceFactory<Player.Player>>();
         }
     }
 }

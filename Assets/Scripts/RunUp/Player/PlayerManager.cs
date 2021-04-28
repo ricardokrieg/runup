@@ -1,19 +1,26 @@
 using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace RunUp.Player {
     public class PlayerManager : MonoBehaviour {
         private Player _player;
+        private Player.Factory _playerFactory;
+        
+        [Inject]
+        public void Init(Player.Factory playerFactory) {
+            Debug.Log("[PlayerManager] Init");
+            _playerFactory = playerFactory;
+        }
         
         public void InstantiatePlayer() {
-            if (FindObjectOfType<Player>()) return;
+            Debug.Log("[PlayerManager] InstantiatePlayer");
+
+            if (_player == null) {
+                _player = _playerFactory.Create("Prefabs/Unicorn");    
+            }
             
-            Debug.Log("[GameManager] Instantiating Player");
-            
-            var playerGameObject = Instantiate(Resources.Load<GameObject>("Prefabs/Unicorn"));
-            _player = playerGameObject.GetComponent<Player>();
-            
-            playerGameObject.SetActive(false);
+            _player.gameObject.SetActive(false);
         }
 
         public void StartPlayer(bool playAnimation = false) {
@@ -37,7 +44,7 @@ namespace RunUp.Player {
 
             _player.gameObject.SetActive(true);
             _player.Activate();
-            _player.Restart();
+            _player.Start();
         }
     }
 }

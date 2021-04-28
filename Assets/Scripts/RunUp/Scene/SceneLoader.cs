@@ -5,16 +5,18 @@ using UnityEngine.SceneManagement;
 
 namespace RunUp.Scene {
     public class SceneLoader : MonoBehaviour {
-        private List<ISceneLoadObserver> _observers;
+        private List<ISceneLoadObserver> _sceneLoadObservers;
         private SceneStore _sceneStore;
         
         private bool _loadingScene;
 
-        public void Start() {
-            _sceneStore = new SceneStore();
-            _sceneStore.ListSceneNames();
+        public void Initialize() {
+            Debug.Log("[SceneLoader] Initialize");
             
-            _observers = new List<ISceneLoadObserver>();
+            _sceneLoadObservers = new List<ISceneLoadObserver>();
+            
+            _sceneStore = new SceneStore();
+            _sceneStore.ListLoadedScenes();
         }
 
         public void LoadScene(string sceneName) {
@@ -24,17 +26,17 @@ namespace RunUp.Scene {
 
             _sceneStore.AddScene(sceneName);
             if (_sceneStore.SceneIsLoaded(sceneName)) {
-                NotifyObservers();
+                NotifySceneLoadObservers(sceneName);
                 return;
             }
             
             StartCoroutine(LoadSceneAsync(sceneName));
         }
 
-        public void Subscribe(ISceneLoadObserver observer) {
-            if (!_observers.Contains(observer)) {
-                _observers.Add(observer);
-            }
+        public void SubscribeToSceneLoad(ISceneLoadObserver observer) {
+            if (_sceneLoadObservers.Contains(observer)) return;
+            
+            _sceneLoadObservers.Add(observer);
         }
 
         private IEnumerator LoadSceneAsync(string sceneName) {
@@ -50,6 +52,8 @@ namespace RunUp.Scene {
                 while (!asyncUnload.isDone) {
                     yield return null;
                 }
+                
+                _sceneStore.RemoveScene(sceneName);
             }
             Debug.Log("[SceneLoader] Unloaded all Scenes");
 
@@ -61,20 +65,18 @@ namespace RunUp.Scene {
             }
 
             Debug.Log("[SceneLoader] Done");
-            _sceneStore.ListSceneNames();
+            _sceneStore.ListLoadedScenes();
             _loadingScene = false;
 
-            NotifyObservers();
+            NotifySceneLoadObservers(sceneName);
         }
 
-        private void NotifyObservers() {
-            foreach (var observer in _observers.ToArray()) {
-                if (_observers.Contains(observer)) {
-                    observer.OnCompleted();
+        private void NotifySceneLoadObservers(string sceneName) {
+            foreach (var observer in _sceneLoadObservers.ToArray()) {
+                if (_sceneLoadObservers.Contains(observer)) {
+                    observer.OnSceneLoaded(sceneName);
                 }
             }
-
-            _observers.Clear();
         }
     }
 }

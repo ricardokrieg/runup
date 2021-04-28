@@ -15,8 +15,12 @@ namespace RunUp.Scene {
             
             _sceneNames.Add(sceneName);
         }
+
+        public void RemoveScene(string sceneName) {
+            _sceneNames.Remove(sceneName);
+        }
         
-        public void ListSceneNames() {
+        public void ListLoadedScenes() {
             Debug.Log("[SceneStore] List of scenes:");
             
             for (var i = 0; i < SceneManager.sceneCount; ++i) {

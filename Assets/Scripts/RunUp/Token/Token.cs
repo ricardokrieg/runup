@@ -1,10 +1,17 @@
 using RunUp.Scene;
 using UnityEngine;
+using Zenject;
 
 namespace RunUp.Token {
-    public class Token : MonoBehaviour, Scene.ISceneLoadObserver {
+    public class Token : MonoBehaviour {
         [SerializeField] private bool final;
-        [SerializeField] private string nextLevel;
+
+        private Level.ILevelManager _levelManager;
+
+        [Inject]
+        public void Init(Level.ILevelManager levelManager) {
+            _levelManager = levelManager;
+        }
         
         public void Collect() {
             var position = gameObject.transform.position;
@@ -16,17 +23,13 @@ namespace RunUp.Token {
             var animationGameObject = Instantiate(animationPrefab, position, rotation);
             Destroy(animationGameObject, 1f);
 
-            if (final && nextLevel != "") {
-                var sceneLoader = FindObjectOfType<SceneLoader>();
-                
-                sceneLoader.Subscribe(this);
-                sceneLoader.LoadScene(nextLevel);
+            if (final) {
+                Debug.Log("[Token] Collect final");
+                _levelManager.NextLevel();
             }
         }
 
-        public void OnCompleted() {
-            var playerManager = FindObjectOfType<Player.PlayerManager>();
-            playerManager.StartPlayer();
+        public class Factory : PlaceholderFactory<string, Token> {
         }
     }   
 }
