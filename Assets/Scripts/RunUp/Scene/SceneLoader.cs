@@ -20,7 +20,7 @@ namespace RunUp.Scene {
         }
 
         public void LoadScene(string sceneName) {
-            Debug.Log("[SceneLoader] Load Scene " + sceneName);
+            Debug.Log("[SceneLoader] Load scene " + sceneName);
             
             if (_loadingScene) return;
 
@@ -42,22 +42,21 @@ namespace RunUp.Scene {
         private IEnumerator LoadSceneAsync(string sceneName) {
             _loadingScene = true;
             
-            Debug.Log("[SceneLoader] Unloading Scenes");
+            Debug.Log("[SceneLoader] Unloading scenes");
             foreach (var loadedSceneName in _sceneStore.GetSceneNames()) {
                 if (loadedSceneName == sceneName) continue;
                 
-                Debug.Log("[SceneLoader] Unloading Scene async " + loadedSceneName);
+                Debug.Log("[SceneLoader] Unloading scene async " + loadedSceneName);
                 var asyncUnload = SceneManager.UnloadSceneAsync(loadedSceneName);
 
                 while (!asyncUnload.isDone) {
                     yield return null;
                 }
-                
-                _sceneStore.RemoveScene(sceneName);
             }
-            Debug.Log("[SceneLoader] Unloaded all Scenes");
+            _sceneStore.RemoveAllExcept(sceneName);
+            Debug.Log("[SceneLoader] Unloaded all scenes");
 
-            Debug.Log("[SceneLoader] Loading Scene async " + sceneName);
+            Debug.Log("[SceneLoader] Loading scene async " + sceneName);
             var asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
 
             while (!asyncLoad.isDone) {

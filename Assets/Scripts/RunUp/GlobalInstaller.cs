@@ -6,6 +6,7 @@ namespace RunUp {
         public override void InstallBindings() {
             Container
                 .BindInterfacesAndSelfTo<GameManager>()
+                .FromNewComponentOnNewGameObject()
                 .AsSingle()
                 .NonLazy();
             

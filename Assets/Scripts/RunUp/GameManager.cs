@@ -2,7 +2,7 @@ using UnityEngine;
 using Zenject;
 
 namespace RunUp {
-    public class GameManager : IInitializable, Scene.ISceneLoadObserver, Level.ILevelChangeObserver, Token.ICollectObserver {
+    public class GameManager : MonoBehaviour, Scene.ISceneLoadObserver, Level.ILevelChangeObserver, Token.ICollectObserver {
         private Level.ILevelManager _levelManager;
         private Scene.SceneLoader _sceneLoader;
         private Player.PlayerManager _playerManager;
@@ -20,8 +20,8 @@ namespace RunUp {
             _playerManager = playerManager;
         }
 
-        public void Initialize() {
-            Debug.Log("[GameManager] Initialize");
+        public void Start() {
+            Debug.Log("[GameManager] Start");
             Debug.Log("[GameManager] persistentDataPath: " + Application.persistentDataPath);
             
             _sceneLoader.Initialize();
@@ -63,16 +63,18 @@ namespace RunUp {
             Debug.Log("[GameManager] OnCollect " + position + " " + isFinal);
 
             if (isFinal) {
-                // _levelManager.NextLevel();
                 Win();
             }
         }
 
         private void Win() {
-            // TODO disable MainCamera (Camera, Audio Listener)
-            // TODO disable Main Menu (EventSystem)
-            
             _sceneLoader.LoadScene("Win");
+        }
+        
+        public void Continue() {
+            Debug.Log("[GameManager] Continue");
+            
+            _levelManager.NextLevel();
         }
     }
 }

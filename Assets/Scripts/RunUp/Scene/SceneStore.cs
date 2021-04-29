@@ -16,8 +16,8 @@ namespace RunUp.Scene {
             _sceneNames.Add(sceneName);
         }
 
-        public void RemoveScene(string sceneName) {
-            _sceneNames.Remove(sceneName);
+        public void RemoveAllExcept(string keepSceneName) {
+            _sceneNames.RemoveAll(sceneName => sceneName != keepSceneName);
         }
         
         public void ListLoadedScenes() {
