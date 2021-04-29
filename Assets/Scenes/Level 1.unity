@@ -230,7 +230,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446545166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 17.89, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1.2140939, y: 1.2140939, z: 0.121409394}
   m_Children: []
   m_Father: {fileID: 1510909976}
@@ -456,8 +456,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 520188545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.7899, z: 0}
-  m_LocalScale: {x: 6.1105347, y: 28.172281, z: 1}
+  m_LocalPosition: {x: -0, y: 5.036, z: 0}
+  m_LocalScale: {x: 6.110516, y: 24.062008, z: 1}
   m_Children: []
   m_Father: {fileID: 1510909976}
   m_RootOrder: 1
@@ -495,7 +495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8409751671035784984, guid: c00a4843af7b044949f8fa4bb5bf9a1a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.92
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8409751671035784984, guid: c00a4843af7b044949f8fa4bb5bf9a1a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -667,9 +667,9 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-    - position: {x: 17.915688, y: 0, z: 0}
-      leftTangent: {x: -1.8015366, y: -0.0029326715, z: 0}
-      rightTangent: {x: 0.92193604, y: 0.0015007948, z: 0}
+    - position: {x: 10, y: 0, z: 0}
+      leftTangent: {x: -1.8015366, y: -0.0029326612, z: 0}
+      rightTangent: {x: 0.92193794, y: 0.0015007944, z: 0}
       mode: 1
       height: 1
       bevelCutoff: 0
@@ -748,8 +748,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 8.956241, y: 0.0024556518, z: -0.00005}
-    m_Extent: {x: 9.209853, y: 0.25417805, z: 0.00005}
+    m_Center: {x: 4.9983993, y: 0.0021639168, z: -0.00005}
+    m_Extent: {x: 5.2520075, y: 0.25446975, z: 0.00005}
 --- !u!1 &1448717756
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20b5a3320b6cd4dea97505a3aaa7514e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quantity: 12
+  quantity: 10
 --- !u!114 &1448717759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 2008336929}
   - component: {fileID: 2008336928}
   m_Layer: 0
-  m_Name: SplineComputer
+  m_Name: Spline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -896,12 +896,12 @@ MonoBehaviour:
       tangent: {x: 0, y: 0, z: 0}
       tangent2: {x: 0, y: 0, z: 0}
     - _type: 0
-      position: {x: 0, y: 17.9, z: 0}
+      position: {x: 0, y: 10, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       normal: {x: 0, y: 0, z: -1}
       size: 1
-      tangent: {x: 0, y: 17.9, z: 0}
-      tangent2: {x: 0, y: 17.9, z: 0}
+      tangent: {x: 0, y: 10, z: 0}
+      tangent2: {x: 0, y: 10, z: 0}
     closed: 0
     type: 0
     linearAverageDirection: 1
@@ -925,55 +925,55 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
-  - position: {x: 0, y: 1.9888889, z: 0}
+  - position: {x: 0, y: 1.1111112, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.1111111111111111
-  - position: {x: 0, y: 3.9777777, z: 0}
+  - position: {x: 0, y: 2.2222223, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.2222222222222222
-  - position: {x: 0, y: 5.9666667, z: 0}
+  - position: {x: 0, y: 3.3333335, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.3333333333333333
-  - position: {x: 0, y: 7.9555554, z: 0}
+  - position: {x: 0, y: 4.4444447, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.4444444444444444
-  - position: {x: 0, y: 9.944445, z: 0}
+  - position: {x: 0, y: 5.555556, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.5555555555555556
-  - position: {x: 0, y: 11.933334, z: 0}
+  - position: {x: 0, y: 6.666667, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.6666666666666666
-  - position: {x: 0, y: 13.922223, z: 0}
+  - position: {x: 0, y: 7.7777777, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.7777777777777778
-  - position: {x: 0, y: 15.911112, z: 0}
+  - position: {x: 0, y: 8.888889, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.8888888888888888
-  - position: {x: 0, y: 17.9, z: 0}
+  - position: {x: 0, y: 10, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -986,55 +986,55 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0
-  - position: {x: 0, y: 1.9888889, z: 0}
+  - position: {x: 0, y: 1.1111112, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.1111111111111111
-  - position: {x: 0, y: 3.9777777, z: 0}
+  - position: {x: 0, y: 2.2222223, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.2222222222222222
-  - position: {x: 0, y: 5.9666667, z: 0}
+  - position: {x: 0, y: 3.3333335, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.3333333333333333
-  - position: {x: 0, y: 7.9555554, z: 0}
+  - position: {x: 0, y: 4.4444447, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.4444444444444444
-  - position: {x: 0, y: 9.944445, z: 0}
+  - position: {x: 0, y: 5.555556, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.5555555555555556
-  - position: {x: 0, y: 11.933334, z: 0}
+  - position: {x: 0, y: 6.666667, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.6666666666666666
-  - position: {x: 0, y: 13.922223, z: 0}
+  - position: {x: 0, y: 7.7777777, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.7777777777777778
-  - position: {x: 0, y: 15.911112, z: 0}
+  - position: {x: 0, y: 8.888889, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     size: 1
     percent: 0.8888888888888888
-  - position: {x: 0, y: 17.9, z: 0}
+  - position: {x: 0, y: 10, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -1048,55 +1048,55 @@ MonoBehaviour:
       color: {r: 1, g: 1, b: 1, a: 1}
       size: 1
       percent: 0
-    - position: {x: 0, y: 1.9888889, z: 0}
+    - position: {x: 0, y: 1.1111112, z: 0}
       up: {x: 0, y: 0, z: -1}
       forward: {x: 0, y: 1, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       size: 1
       percent: 0.1111111111111111
-    - position: {x: 0, y: 3.9777777, z: 0}
+    - position: {x: 0, y: 2.2222223, z: 0}
       up: {x: 0, y: 0, z: -1}
       forward: {x: 0, y: 1, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       size: 1
       percent: 0.2222222222222222
-    - position: {x: 0, y: 5.9666667, z: 0}
+    - position: {x: 0, y: 3.3333335, z: 0}
       up: {x: 0, y: 0, z: -1}
       forward: {x: 0, y: 1, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       size: 1
       percent: 0.3333333333333333
-    - position: {x: 0, y: 7.9555554, z: 0}
+    - position: {x: 0, y: 4.4444447, z: 0}
       up: {x: 0, y: 0, z: -1}
       forward: {x: 0, y: 1, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       size: 1
       percent: 0.4444444444444444
-    - position: {x: 0, y: 9.944445, z: 0}
+    - position: {x: 0, y: 5.555556, z: 0}
       up: {x: 0, y: 0, z: -1}
       forward: {x: 0, y: 1, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       size: 1
       percent: 0.5555555555555556
-    - position: {x: 0, y: 11.933334, z: 0}
+    - position: {x: 0, y: 6.666667, z: 0}
       up: {x: 0, y: 0, z: -1}
       forward: {x: 0, y: 1, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       size: 1
       percent: 0.6666666666666666
-    - position: {x: 0, y: 13.922223, z: 0}
+    - position: {x: 0, y: 7.7777777, z: 0}
       up: {x: 0, y: 0, z: -1}
       forward: {x: 0, y: 1, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       size: 1
       percent: 0.7777777777777778
-    - position: {x: 0, y: 15.911112, z: 0}
+    - position: {x: 0, y: 8.888889, z: 0}
       up: {x: 0, y: 0, z: -1}
       forward: {x: 0, y: 1, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       size: 1
       percent: 0.8888888888888888
-    - position: {x: 0, y: 17.9, z: 0}
+    - position: {x: 0, y: 10, z: 0}
       up: {x: 0, y: 0, z: -1}
       forward: {x: 0, y: 1, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
