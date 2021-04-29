@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using Zenject;
 
 namespace RunUp.UI {
-    public class ContinueButton : MonoBehaviour {
+    public class RestartButton : MonoBehaviour {
         private GameManager _gameManager;
         
         [Inject]
@@ -16,9 +16,9 @@ namespace RunUp.UI {
         }
 
         private void OnClick() {
-            Debug.Log("[ContinueButton] OnClick");
+            Debug.Log("[RestartButton] OnClick");
             
-            _gameManager.NextLevel();
+            _gameManager.RestartLevel();
         }
     }
 }

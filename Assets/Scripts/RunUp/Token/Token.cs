@@ -1,24 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 namespace RunUp.Token {
     public class Token : MonoBehaviour, IToken {
         [SerializeField] private bool final;
 
         private List<ICollectObserver> _collectObservers;
-        private GameManager _gameManager;
 
-        [Inject]
-        public void Init(GameManager gameManager) {
-            _gameManager = gameManager;
-        }
-
-        public void Start() {
+        public void Register(GameManager gameManager) {
             // TODO check if after destroying the gameObject, if this array will keep in memory
             _collectObservers = new List<ICollectObserver>();
             
-            SubscribeToCollect(_gameManager);
+            SubscribeToCollect(gameManager);
         }
         
         public void Collect() {
@@ -48,9 +41,6 @@ namespace RunUp.Token {
                     observer.OnCollect(position, final);
                 }
             }
-        }
-
-        public class Factory : PlaceholderFactory<string, Token> {
         }
     }   
 }

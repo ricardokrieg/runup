@@ -37,9 +37,9 @@ namespace RunUp {
                 .BindInterfacesAndSelfTo<Audio.AudioSettings>()
                 .AsSingle();
             
-            Container
-                .BindFactory<string, Token.Token, Token.Token.Factory>()
-                .FromFactory<PrefabResourceFactory<Token.Token>>();
+            // Container
+            //     .BindFactory<string, Token.Token, Token.Token.Factory>()
+            //     .FromFactory<PrefabResourceFactory<Token.Token>>();
             
             Container
                 .BindFactory<string, Player.Player, Player.Player.Factory>()

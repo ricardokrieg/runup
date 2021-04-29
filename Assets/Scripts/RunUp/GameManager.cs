@@ -1,8 +1,9 @@
+using RunUp.Misc;
 using UnityEngine;
 using Zenject;
 
 namespace RunUp {
-    public class GameManager : MonoBehaviour, Scene.ISceneLoadObserver, Level.ILevelChangeObserver, Token.ICollectObserver {
+    public class GameManager : MonoBehaviour, Scene.ISceneLoadObserver, Level.ILevelChangeObserver, Token.ICollectObserver, Obstacle.ICollisionObserver {
         private Level.ILevelManager _levelManager;
         private Scene.SceneLoader _sceneLoader;
         private Player.PlayerManager _playerManager;
@@ -66,15 +67,34 @@ namespace RunUp {
                 Win();
             }
         }
+        
+        public void OnCollision() {
+            Debug.Log("[GameManager] OnCollision");
+            
+            // var player = GetComponent<Player>();
+            // player.Start();
+
+            Loss();
+        }
 
         private void Win() {
             _sceneLoader.LoadScene("Win");
         }
         
-        public void Continue() {
-            Debug.Log("[GameManager] Continue");
+        private void Loss() {
+            _sceneLoader.LoadScene("Loss");
+        }
+        
+        public void NextLevel() {
+            Debug.Log("[GameManager] NextLevel");
             
             _levelManager.NextLevel();
+        }
+        
+        public void RestartLevel() {
+            Debug.Log("[GameManager] RestartLevel");
+            
+            _levelManager.LoadCurrentLevel();
         }
     }
 }

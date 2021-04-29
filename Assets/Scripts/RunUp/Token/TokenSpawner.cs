@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Dreamteck;
 using Dreamteck.Splines;
 using UnityEngine;
 using Zenject;
@@ -8,15 +7,19 @@ namespace RunUp.Token {
     public class TokenSpawner : MonoBehaviour {
         [SerializeField] private int quantity = 12;
 
-        private Token.Factory _tokenFactory;
-        
+        private GameManager _gameManager;
+        private List<Token> _tokens;
+
         [Inject]
-        public void Init(Token.Factory tokenFactory) {
+        public void Init(GameManager gameManager) {
             Debug.Log("[TokenSpawner] Init");
-            _tokenFactory = tokenFactory;
+
+            _gameManager = gameManager;
         }
         
         public void Start() {
+            _tokens = new List<Token>();
+            
             var splineComputer = FindObjectOfType<SplineComputer>();
 
             var positions = new List<Vector3>();
@@ -32,9 +35,19 @@ namespace RunUp.Token {
             }
         }
 
+        public void OnDisable() {
+            foreach (var token in _tokens.ToArray()) {
+                Destroy(token.gameObject);
+            }
+        }
+
         private void PlaceToken(Vector3 position) {
-            var token = _tokenFactory.Create("Prefabs/Token");
-            token.transform.position = position;
+            var tokenPrefab = Resources.Load<GameObject>("Prefabs/Token");
+            var tokenGameObject = Instantiate(tokenPrefab, position, Quaternion.identity);
+            var token = tokenGameObject.gameObject.GetComponent<Token>();
+            
+            _tokens.Add(token);
+            token.Register(_gameManager);
         }
     }   
 }
