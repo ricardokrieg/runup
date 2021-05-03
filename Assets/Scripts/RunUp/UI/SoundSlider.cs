@@ -1,18 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
-using AudioSettings = RunUp.Audio.AudioSettings;
 
 namespace RunUp.UI {
     public class SoundSlider : MonoBehaviour {
-        private AudioSettings _audioSettings;
+        private NAudio.IAudioSettings _audioSettings;
 
-        [Inject]
-        public void Init(AudioSettings audioSettings) {
-            _audioSettings = audioSettings;
-        }
-        
         void Start() {
+            _audioSettings = Container.Instance.Get<NAudio.IAudioSettings>();
+            
+            Debug.Log("[SoundSlider] Start soundValue = " + _audioSettings.SoundValue());
+            
             var slider = GetComponent<Slider>();
 
             slider.onValueChanged.AddListener(OnValueChanged);
