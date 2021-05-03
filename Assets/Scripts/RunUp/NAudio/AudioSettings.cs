@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace RunUp.NAudio {
-    public class AudioSettings : IAudioSettings {
+    public class AudioSettings : IAudioSettings, NInitializer.IInitializable {
         private static AudioSettings instance;
 
         private readonly IAudioService _audioService;
@@ -17,8 +17,8 @@ namespace RunUp.NAudio {
             _store = new SettingsStore();
         }
         
-        public void Start() {
-            Debug.Log("[AudioSettings] Start");
+        public void Initialize() {
+            Debug.Log("[AudioSettings] Initialize");
             
             if (!IsSoundOn()) {
                 _audioService.SetSoundOff();    
