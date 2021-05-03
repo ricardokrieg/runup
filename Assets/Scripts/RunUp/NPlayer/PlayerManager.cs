@@ -1,47 +1,54 @@
 using System.Collections;
 using UnityEngine;
-using Zenject;
 
 namespace RunUp.NPlayer {
     public class PlayerManager : MonoBehaviour {
         [SerializeField] private GameObject playerPrefab;
         [SerializeField] private GameObject spawnAnimationPrefab;
         
+        private static PlayerManager instance;
+        public static PlayerManager Instance => instance;
+        
         // TODO program to interface
         private Player _player;
+        
+        public void Awake() {
+            Debug.Log("[PlayerManager] Awake");
+            
+            if (instance != null && instance != this) {
+                Destroy(gameObject);
+            } else {
+                instance = this;
+            }
+        }
         
         public void InstantiatePlayer() {
             Debug.Log("[PlayerManager] InstantiatePlayer");
 
-            if (_player == null) {
-                var playerGameObject = Instantiate(playerPrefab);
-                // TODO program to interface
-                _player = playerGameObject.GetComponent<Player>();
-            }
+            var playerGameObject = Instantiate(playerPrefab);
+            // TODO program to interface
+            _player = playerGameObject.GetComponent<Player>();
             
             _player.gameObject.SetActive(false);
+            
+            StartPlayer(true);
         }
 
         public void StartPlayer(bool playAnimation = false) {
-            // TODO program to interface OR inject camera somehow
-            var playerCamera = FindObjectOfType<Camera>();
-            // TODO program to interface OR inject camera somehow
+            Debug.Log("[PlayerManager] StartPlayer");
+
+            var playerCamera = Container.Instance.Get<Camera>();
             var playerFollower = playerCamera.gameObject.AddComponent<PlayerFollower>();
             playerFollower.Initialize(_player);
-            
-            StartCoroutine(PlacePlayer(playAnimation));
+
+            PlacePlayer(playAnimation);
         }
         
-        private IEnumerator PlacePlayer(bool playAnimation) {
-            // TODO why I need to wait 100ms before placing the player?
-            yield return new WaitForSeconds(0.1f);
-            
+        private void PlacePlayer(bool playAnimation) {
             var position = _player.transform.position;
 
             if (playAnimation) {
-                var animationGameObject = Instantiate(spawnAnimationPrefab, position, Quaternion.identity);
-                // TODO set the animation to autodestroy (create new prefab before making this change)
-                Destroy(animationGameObject, 2f);
+                Instantiate(spawnAnimationPrefab, position, Quaternion.identity);
             }
 
             _player.gameObject.SetActive(true);

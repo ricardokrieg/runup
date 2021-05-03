@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -9,6 +10,10 @@ namespace RunUp.UI {
         // TODO what method should I use as this is a Button? Maybe onEnable?
         public void Start() {
             _observers = new List<IEventObserver>();
+
+            // TODO find how to invert this dependency? Should I call Container here?
+            var gameManager = Container.Instance.Get<GameManager>();
+            Subscribe(gameManager);
         }
         
         public void Subscribe(IEventObserver observer) {
@@ -19,7 +24,7 @@ namespace RunUp.UI {
         
         public override void OnPointerDown(PointerEventData eventData) {
             base.OnPointerDown(eventData);
-            // gameObject.GetComponentInParent<Canvas>().enabled = false;
+            gameObject.GetComponentInParent<Canvas>().enabled = false;
             
             NotifyObservers();
         }

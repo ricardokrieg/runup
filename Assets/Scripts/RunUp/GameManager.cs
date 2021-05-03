@@ -1,10 +1,12 @@
+using RunUp.UI;
 using UnityEngine;
-// using Zenject;
 
 namespace RunUp {
     // public class GameManager : MonoBehaviour, Scene.ISceneLoadObserver, Level.ILevelChangeObserver, Token.ICollectObserver, Obstacle.ICollisionObserver {
-    public class GameManager : MonoBehaviour, NToken.ICollectionObserver {
+    public class GameManager : MonoBehaviour, NToken.ICollectionObserver, IEventObserver {
         private static GameManager instance;
+
+        private NPlayer.PlayerManager _playerManager;
         
         public static GameManager Instance => instance;
         
@@ -17,9 +19,23 @@ namespace RunUp {
                 instance = this;
             }
         }
+
+        public void Start() {
+            _playerManager = Container.Instance.Get<NPlayer.PlayerManager>();
+        }
         
         public void OnCollection(Vector2 position, bool isFinal) {
             Debug.Log("[GameManager] OnCollection " + position + " " + isFinal);
+        }
+        
+        public void OnEvent(UIEvent uiEvent) {
+            Debug.Log("[GameManager] OnEvent " + uiEvent.type);
+
+            switch (uiEvent.type) {
+                case UIEvent.Type.StartGame:
+                    _playerManager.InstantiatePlayer();
+                    break;
+            }
         }
         
         // private Level.ILevelManager _levelManager;
