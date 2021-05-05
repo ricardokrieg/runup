@@ -4,7 +4,7 @@ using UnityEngine;
 namespace RunUp.NToken {
     public class Token : MonoBehaviour, ICollectionObservable {
         [SerializeField] private bool final;
-        [SerializeField] private GameObject heartStreamPrefab;
+        [SerializeField] private GameObject tokenCollectionPrefab;
 
         private List<ICollectionObserver> _observers;
 
@@ -43,9 +43,7 @@ namespace RunUp.NToken {
             var position = gameObject.transform.position;
             var rotation = new Quaternion(0, 90, 0, 0);
             
-            var animationGameObject = Instantiate(heartStreamPrefab, position, rotation);
-            
-            Destroy(animationGameObject, 1f);
+            Instantiate(tokenCollectionPrefab, position, rotation);
         }
     }   
 }

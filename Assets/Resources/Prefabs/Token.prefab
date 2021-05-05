@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   final: 0
-  nextLevel: 
+  tokenCollectionPrefab: {fileID: 7836791147383753679, guid: 228f8622a11a144819b53573267e17f1, type: 3}
 --- !u!58 &-4967593123494171664
 CircleCollider2D:
   m_ObjectHideFlags: 0
