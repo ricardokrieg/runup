@@ -1,4 +1,5 @@
 using System.Collections;
+using Cinemachine;
 using UnityEngine;
 
 namespace RunUp.NPlayer {
@@ -22,8 +23,8 @@ namespace RunUp.NPlayer {
             }
         }
         
-        public void InstantiatePlayer() {
-            Debug.Log("[PlayerManager] InstantiatePlayer");
+        public void SpawnPlayer(bool playAnimation = true) {
+            Debug.Log("[PlayerManager] SpawnPlayer");
 
             var playerGameObject = Instantiate(playerPrefab);
             // TODO program to interface
@@ -31,15 +32,21 @@ namespace RunUp.NPlayer {
             
             _player.gameObject.SetActive(false);
             
-            StartPlayer(true);
+            StartPlayer(playAnimation);
+        }
+
+        public void RespawnPlayer() {
+            Debug.Log("[PlayerManager] RespawnPlayer");
+            
+            SpawnPlayer(false);
         }
 
         public void StartPlayer(bool playAnimation = false) {
             Debug.Log("[PlayerManager] StartPlayer");
 
-            var playerCamera = Container.Instance.Get<Camera>();
-            var playerFollower = playerCamera.gameObject.AddComponent<PlayerFollower>();
-            playerFollower.Initialize(_player);
+            var virtualCamera = GameObject.Find("vcam1");
+            var virtualCameraComponent = virtualCamera.gameObject.GetComponent<CinemachineVirtualCamera>();
+            virtualCameraComponent.Follow = _player.transform;
 
             PlacePlayer(playAnimation);
         }

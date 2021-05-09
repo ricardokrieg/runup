@@ -2,12 +2,18 @@ using System.Collections.Generic;
 
 namespace RunUp.NLevel {
     public class LevelManager : ILevelManager, ILevelChangeObservable {
+        private static LevelManager instance;
+        
         private readonly List<ILevelChangeObserver> _observers;
 
         private int _currentLevel;
         private ILevelStore _store;
         
-        public LevelManager() {
+        public static LevelManager Instance {
+            get { return instance ??= new LevelManager(); }
+        }
+        
+        private LevelManager() {
             _observers = new List<ILevelChangeObserver>();
             // TODO program to interface (use Factory)
             _store = new LevelStore();

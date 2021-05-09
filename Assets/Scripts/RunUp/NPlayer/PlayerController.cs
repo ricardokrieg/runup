@@ -69,7 +69,7 @@ namespace RunUp.NPlayer {
 
         private void PlayTouchAnimation(Vector3 touchPosition) {
             Debug.Log("[PlayerController] PlayAnimation " + touchPosition);
-            var position = new Vector3(touchPosition.x, touchPosition.y, -2f);
+            var position = new Vector3(touchPosition.x, touchPosition.y, 0);
             
             var animationGameObject = Instantiate(animationPrefab, position, Quaternion.identity);
             
