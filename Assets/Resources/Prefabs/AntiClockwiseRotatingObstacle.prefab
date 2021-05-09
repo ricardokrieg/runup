@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 3358772797700143208}
   - component: {fileID: 3358772797700143215}
   - component: {fileID: 1729528504}
+  - component: {fileID: 4653652325717539299}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Obstacle
@@ -180,3 +181,15 @@ PolygonCollider2D:
       - {x: 3.1999998, y: -0.32999998}
       - {x: 3.1999998, y: 0.26}
       - {x: 3.1299999, y: 0.32999998}
+--- !u!114 &4653652325717539299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3358772797700143210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e000d0c56ee04268a0dccca9caa818d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

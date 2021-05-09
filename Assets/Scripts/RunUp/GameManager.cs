@@ -1,4 +1,8 @@
 using System.Collections;
+using System.Linq;
+using RunUp.NObstacle;
+using RunUp.NPlayerStatus;
+using RunUp.NToken;
 using RunUp.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +14,7 @@ namespace RunUp {
         private NPlayer.PlayerManager _playerManager;
         private NLevel.ILevelManager _levelManager;
         private NLevel.ILevelChangeObservable _levelChangeObservable;
+        private PlayerStatus _playerStatus;
         
         public static GameManager Instance => instance;
         
@@ -32,7 +37,6 @@ namespace RunUp {
             _levelManager = Container.Instance.Get<NLevel.ILevelManager>();
             
             _levelChangeObservable.SubscribeToLevelChange(this);
-            
             _levelManager.LoadCurrentLevel();
         }
         
@@ -47,8 +51,7 @@ namespace RunUp {
         public void OnLevelChange(int previousLevel, int nextLevel) {
             Debug.Log("[GameManager] OnLevelChange " + previousLevel + " -> " + nextLevel);
 
-            StartCoroutine(LoadScene("Level " + nextLevel));
-            // SceneManager.LoadSceneAsync("Level " + nextLevel, LoadSceneMode.Single);
+            StartCoroutine(LoadScene("Level " + nextLevel, previousLevel != 0));
         }
         
         public void OnEvent(UIEvent uiEvent) {
@@ -64,7 +67,7 @@ namespace RunUp {
             }
         }
 
-        private IEnumerator LoadScene(string sceneName) {
+        private IEnumerator LoadScene(string sceneName, bool respawnPlayer) {
             Debug.Log("[GameManager] LoadScene " + sceneName);
             
             var asyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
@@ -75,76 +78,28 @@ namespace RunUp {
             
             Debug.Log("[GameManager] Scene loaded");
             
-            _playerManager.RespawnPlayer();
+            InitializePlayerStatus();
+            if (respawnPlayer) {
+                _playerManager.RespawnPlayer();    
+            }
         }
         
-        // public void Start() {
-        //     Debug.Log("[GameManager] Start");
-        //     Debug.Log("[GameManager] persistentDataPath: " + Application.persistentDataPath);
-        //     
-        //     _sceneLoader.Initialize();
-        //     
-        //     _levelManager.SubscribeToLevelChange(this);
-        //     _levelManager.LoadCurrentLevel();
-        // }
-        //
-        // public void OnLevelChange(int previousLevel, int nextLevel) {
-        //     Debug.Log("[GameManager] OnLevelChange " + previousLevel + " -> " + nextLevel);
-        //     
-        //     var level = "Level " + nextLevel;
-        //     Debug.Log("[GameManager] Loading scene " + level);
-        //     
-        //     _sceneLoader.SubscribeToSceneLoad(this);
-        //     _sceneLoader.LoadScene(level);
-        // }
-        //
-        // public void OnSceneLoaded(string sceneName) {
-        //     Debug.Log("[GameManager] OnSceneLoaded " + sceneName);
-        //
-        //     if (sceneName == "Win") return;
-        //     
-        //     if (_gameStarted) {
-        //         _playerManager.StartPlayer();
-        //     } else {
-        //         _playerManager.InstantiatePlayer();
-        //     }
-        // }
-        //
-        // public void OnCollect(Vector2 position, bool isFinal) {
-        //     Debug.Log("[GameManager] OnCollect " + position + " " + isFinal);
-        //
-        //     if (isFinal) {
-        //         Win();
-        //     }
-        // }
-        //
-        // public void OnCollision() {
-        //     Debug.Log("[GameManager] OnCollision");
-        //     
-        //     // var player = GetComponent<Player>();
-        //     // player.Start();
-        //
-        //     Loss();
-        // }
-        //
-        // private void Win() {
-        //     _sceneLoader.LoadScene("Win");
-        // }
-        //
-        // private void Loss() {
-        //     _sceneLoader.LoadScene("Loss");
-        // }
-        //
-        // public void NextLevel() {
-        //     Debug.Log("[GameManager] NextLevel");
-        //     
-        //     _levelManager.NextLevel();
-        // }
-        //
-        // public void RestartLevel() {
-        //     Debug.Log("[GameManager] RestartLevel");
-        //     
-        //     _levelManager.LoadCurrentLevel();
-        // }
+        private void InitializePlayerStatus() {
+            Debug.Log("[GameManager] InitializePlayerStatus");
+            
+            _playerStatus = new PlayerStatus();
+            
+            var collisionObservables = FindObjectsOfType<MonoBehaviour>().OfType<ICollisionObservable>();
+            
+            foreach (var observable in collisionObservables) {
+                observable.SubscribeToCollision(_playerStatus);
+            }
+            
+            var collectionObservables = FindObjectsOfType<MonoBehaviour>().OfType<ICollectionObservable>();
+            
+            foreach (var observable in collectionObservables) {
+                observable.SubscribeToCollection(_playerStatus);
+            }
+        }
     }
 }

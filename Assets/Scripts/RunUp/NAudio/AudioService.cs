@@ -22,8 +22,6 @@ namespace RunUp.NAudio {
         public void Start() {
             Debug.Log("[AudioService] Start");
             
-            DontDestroyOnLoad(gameObject);
-            
             _audioSource = GetComponent<AudioSource>();
             _audioSource.clip = mainThemeAudioClip;
             _audioSource.loop = true;
