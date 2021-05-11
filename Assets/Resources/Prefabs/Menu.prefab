@@ -1317,7 +1317,7 @@ GameObject:
   - component: {fileID: 5475172755126985736}
   - component: {fileID: 5475172755126985737}
   - component: {fileID: 5475172755126985742}
-  - component: {fileID: 2627767860490535485}
+  - component: {fileID: 419357493464787708}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -1410,7 +1410,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2627767860490535485
+--- !u!114 &419357493464787708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5475172755126985743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c976805dea34cf4bad11e9f1706f670, type: 3}
+  m_Script: {fileID: 11500000, guid: 8059f810d71e4dc5816ea1f5fa6f2948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5475172755210336054
