@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace RunUp {
-    public class GameManager : MonoBehaviour, NToken.ICollectionObserver, NLevel.ILevelChangeObserver, IEventObserver {
+    public class GameManager : MonoBehaviour, ICollectionObserver, NLevel.ILevelChangeObserver, IEventObserver {
         private static GameManager instance;
 
         private NPlayer.PlayerManager _playerManager;
@@ -63,6 +63,9 @@ namespace RunUp {
                     break;
                 case UIEvent.Type.NextLevel:
                     _levelManager.NextLevel();
+                    break;
+                case UIEvent.Type.RestartGame:
+                    _levelManager.LoadCurrentLevel();
                     break;
             }
         }

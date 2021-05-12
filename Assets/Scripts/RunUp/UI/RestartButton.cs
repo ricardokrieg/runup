@@ -9,6 +9,10 @@ namespace RunUp.UI {
         public void Start() {
             _observers = new List<IEventObserver>();
             
+            // TODO program to interface
+            var observer = Container.Instance.Get<GameManager>();
+            Subscribe(observer);
+            
             GetComponent<Button>().onClick.AddListener(OnClick);
         }
 
@@ -21,6 +25,7 @@ namespace RunUp.UI {
         private void OnClick() {
             Debug.Log("[RestartButton] OnClick");
             
+            GetComponent<Button>().interactable = false;
             NotifyObservers();
         }
         
