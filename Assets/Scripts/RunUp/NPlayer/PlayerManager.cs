@@ -1,5 +1,5 @@
-using System.Collections;
 using Cinemachine;
+using Dreamteck.Splines;
 using UnityEngine;
 
 namespace RunUp.NPlayer {
@@ -22,6 +22,10 @@ namespace RunUp.NPlayer {
                 instance = this;
             }
         }
+
+        public float PlayerSpeed() {
+            return 2f;
+        }
         
         public void SpawnPlayer(bool playAnimation = true) {
             Debug.Log("[PlayerManager] SpawnPlayer");
@@ -29,6 +33,7 @@ namespace RunUp.NPlayer {
             var playerGameObject = Instantiate(playerPrefab);
             // TODO program to interface
             _player = playerGameObject.GetComponent<Player>();
+            _player.GetComponent<SplineFollower>().followSpeed = PlayerSpeed();
             
             _player.gameObject.SetActive(false);
             

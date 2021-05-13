@@ -3,10 +3,16 @@ using UnityEngine;
 
 namespace RunUp.NObstacle {
     public class Obstacle : MonoBehaviour, ICollisionObservable {
+        [SerializeField] private float speedMultiplier = 1;
+        
         private List<ICollisionObserver> _observers;
         
         public void Start() {
             _observers = new List<ICollisionObserver>();
+        }
+
+        public float GetSpeedMultiplier() {
+            return speedMultiplier;
         }
         
         public void SubscribeToCollision(ICollisionObserver observer) {
