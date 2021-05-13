@@ -1,6 +1,6 @@
 namespace RunUp.NLevel {
     public interface ILevelStore {
         public int LoadLevel();
-        public void SaveLevel(int levels);
+        public void SaveLevel(int level);
     }
 }
