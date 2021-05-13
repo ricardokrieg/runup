@@ -11,6 +11,7 @@ namespace RunUp.NPlayer {
         private Animator _animator;
         
         public void Start() {
+            Debug.Log("[Player] Start");
             var splineComputer = FindObjectOfType<SplineComputer>();
             
             _splineFollower = GetComponent<SplineFollower>();

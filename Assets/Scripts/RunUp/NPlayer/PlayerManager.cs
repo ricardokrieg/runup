@@ -65,7 +65,6 @@ namespace RunUp.NPlayer {
 
             _player.gameObject.SetActive(true);
             _player.Initialize();
-            _player.Start();
         }
     }
 }
