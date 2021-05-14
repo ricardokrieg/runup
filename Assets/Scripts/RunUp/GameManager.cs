@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace RunUp {
-    public class GameManager : MonoBehaviour, ICollectionObserver, NLevel.ILevelChangeObserver, IEventObserver {
+    public class GameManager : MonoBehaviour, NLevel.ILevelChangeObserver, IEventObserver, IPlayerStatusObserver {
         private static GameManager instance;
 
         private NPlayer.PlayerManager _playerManager;
@@ -40,18 +40,10 @@ namespace RunUp {
             _levelManager.LoadCurrentLevel();
         }
         
-        public void OnCollection(Vector2 position, bool isFinal) {
-            Debug.Log("[GameManager] OnCollection " + position + " " + isFinal);
-
-            if (isFinal) {
-                SceneManager.LoadSceneAsync("Win", LoadSceneMode.Single);
-            }
-        }
-        
         public void OnLevelChange(int previousLevel, int nextLevel) {
             Debug.Log("[GameManager] OnLevelChange " + previousLevel + " -> " + nextLevel);
 
-            StartCoroutine(LoadScene("Level " + nextLevel, previousLevel != 0));
+            StartCoroutine(LoadLevelScene("Level " + nextLevel, previousLevel != 0));
         }
         
         public void OnEvent(UIEvent uiEvent) {
@@ -69,8 +61,17 @@ namespace RunUp {
                     break;
             }
         }
+        
+        public void OnWin() {
+            // SceneManager.LoadSceneAsync("Win", LoadSceneMode.Single);
+            StartCoroutine(LoadSceneWithDelay("Win"));
+        }
 
-        private IEnumerator LoadScene(string sceneName, bool respawnPlayer) {
+        public void OnLoss() {
+            StartCoroutine(LoadSceneWithDelay("Loss"));
+        }
+
+        private IEnumerator LoadLevelScene(string sceneName, bool respawnPlayer) {
             Debug.Log("[GameManager] LoadScene " + sceneName);
             
             var asyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
@@ -92,6 +93,9 @@ namespace RunUp {
             
             _playerStatus = new PlayerStatus();
             
+            _playerStatus.SubscribeToWin(this);
+            _playerStatus.SubscribeToLoss(this);
+            
             var collisionObservables = FindObjectsOfType<MonoBehaviour>().OfType<ICollisionObservable>();
             
             foreach (var observable in collisionObservables) {
@@ -103,6 +107,12 @@ namespace RunUp {
             foreach (var observable in collectionObservables) {
                 observable.SubscribeToCollection(_playerStatus);
             }
+        }
+        
+        private IEnumerator LoadSceneWithDelay(string sceneName) {
+            yield return new WaitForSeconds(0.5f);
+            
+            SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         }
     }
 }
