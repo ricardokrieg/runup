@@ -55,7 +55,7 @@ namespace RunUp.NPlayerStatus {
         private void NotifyLossObservers() {
             foreach (var observer in _lossObservers.ToArray()) {
                 if (_lossObservers.Contains(observer)) {
-                    observer.OnWin();
+                    observer.OnLoss();
                 }
             }
         }

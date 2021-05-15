@@ -63,11 +63,14 @@ namespace RunUp {
         }
         
         public void OnWin() {
-            // SceneManager.LoadSceneAsync("Win", LoadSceneMode.Single);
+            Debug.Log("[GameManager] OnWin");
+            
             StartCoroutine(LoadSceneWithDelay("Win"));
         }
 
         public void OnLoss() {
+            Debug.Log("[GameManager] OnLoss");
+            
             StartCoroutine(LoadSceneWithDelay("Loss"));
         }
 

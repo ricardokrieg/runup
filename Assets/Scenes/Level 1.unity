@@ -136,11 +136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3358772797683741440, guid: c3e1de24bf3234ea2a0a0f6549c42677, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.41
+      value: -5.49
       objectReference: {fileID: 0}
     - target: {fileID: 3358772797683741440, guid: c3e1de24bf3234ea2a0a0f6549c42677, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.67
+      value: 4.74
       objectReference: {fileID: 0}
     - target: {fileID: 3358772797683741440, guid: c3e1de24bf3234ea2a0a0f6549c42677, type: 3}
       propertyPath: m_LocalPosition.z
@@ -400,7 +400,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quantity: 10
   tokenPrefab: {fileID: 8409751671035784986, guid: c00a4843af7b044949f8fa4bb5bf9a1a, type: 3}
-  finalToken: {fileID: 1614855542604445568}
 --- !u!4 &683357500
 Transform:
   m_ObjectHideFlags: 0
@@ -479,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598e68924c9f6324bbfd049d3bae754c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editorPathColor: {r: 1, g: 1, b: 1, a: 1}
+  editorPathColor: {r: 0.246707, g: 0.42531514, b: 0.8301887, a: 1}
   alwaysDraw: 1
   drawThinckness: 1
   billboardThickness: 1
@@ -494,18 +493,18 @@ MonoBehaviour:
       position: {x: 0, y: 0, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       normal: {x: 0, y: 0, z: -1}
-      size: 1
+      size: 0.5
       tangent: {x: 0, y: 0, z: 0}
       tangent2: {x: 0, y: 0, z: 0}
     - _type: 0
       position: {x: 0, y: 10, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
       normal: {x: 0, y: 0, z: -1}
-      size: 1
+      size: 0.5
       tangent: {x: 0, y: 10, z: 0}
       tangent2: {x: 0, y: 10, z: 0}
     closed: 0
-    type: 0
+    type: 3
     linearAverageDirection: 1
     customValueInterpolation:
       serializedVersion: 2
@@ -525,122 +524,26 @@ MonoBehaviour:
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
+    size: 0.5
     percent: 0
-  - position: {x: 0, y: 1.1111112, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.1111111111111111
-  - position: {x: 0, y: 2.2222223, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.2222222222222222
-  - position: {x: 0, y: 3.3333335, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.3333333333333333
-  - position: {x: 0, y: 4.4444447, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.4444444444444444
-  - position: {x: 0, y: 5.555556, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.5555555555555556
-  - position: {x: 0, y: 6.666667, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.6666666666666666
-  - position: {x: 0, y: 7.7777777, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.7777777777777778
-  - position: {x: 0, y: 8.888889, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.8888888888888888
   - position: {x: 0, y: 10, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
+    size: 0.5
     percent: 1
   _transformedSamples:
   - position: {x: 0, y: 0, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
+    size: 0.5
     percent: 0
-  - position: {x: 0, y: 1.1111112, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.1111111111111111
-  - position: {x: 0, y: 2.2222223, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.2222222222222222
-  - position: {x: 0, y: 3.3333335, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.3333333333333333
-  - position: {x: 0, y: 4.4444447, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.4444444444444444
-  - position: {x: 0, y: 5.555556, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.5555555555555556
-  - position: {x: 0, y: 6.666667, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.6666666666666666
-  - position: {x: 0, y: 7.7777777, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.7777777777777778
-  - position: {x: 0, y: 8.888889, z: 0}
-    up: {x: 0, y: 0, z: -1}
-    forward: {x: 0, y: 1, z: 0}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
-    percent: 0.8888888888888888
   - position: {x: 0, y: 10, z: 0}
     up: {x: 0, y: 0, z: -1}
     forward: {x: 0, y: 1, z: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
-    size: 1
+    size: 0.5
     percent: 1
   sampleCollection:
     samples:
@@ -648,61 +551,13 @@ MonoBehaviour:
       up: {x: 0, y: 0, z: -1}
       forward: {x: 0, y: 1, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
-      size: 1
+      size: 0.5
       percent: 0
-    - position: {x: 0, y: 1.1111112, z: 0}
-      up: {x: 0, y: 0, z: -1}
-      forward: {x: 0, y: 1, z: 0}
-      color: {r: 1, g: 1, b: 1, a: 1}
-      size: 1
-      percent: 0.1111111111111111
-    - position: {x: 0, y: 2.2222223, z: 0}
-      up: {x: 0, y: 0, z: -1}
-      forward: {x: 0, y: 1, z: 0}
-      color: {r: 1, g: 1, b: 1, a: 1}
-      size: 1
-      percent: 0.2222222222222222
-    - position: {x: 0, y: 3.3333335, z: 0}
-      up: {x: 0, y: 0, z: -1}
-      forward: {x: 0, y: 1, z: 0}
-      color: {r: 1, g: 1, b: 1, a: 1}
-      size: 1
-      percent: 0.3333333333333333
-    - position: {x: 0, y: 4.4444447, z: 0}
-      up: {x: 0, y: 0, z: -1}
-      forward: {x: 0, y: 1, z: 0}
-      color: {r: 1, g: 1, b: 1, a: 1}
-      size: 1
-      percent: 0.4444444444444444
-    - position: {x: 0, y: 5.555556, z: 0}
-      up: {x: 0, y: 0, z: -1}
-      forward: {x: 0, y: 1, z: 0}
-      color: {r: 1, g: 1, b: 1, a: 1}
-      size: 1
-      percent: 0.5555555555555556
-    - position: {x: 0, y: 6.666667, z: 0}
-      up: {x: 0, y: 0, z: -1}
-      forward: {x: 0, y: 1, z: 0}
-      color: {r: 1, g: 1, b: 1, a: 1}
-      size: 1
-      percent: 0.6666666666666666
-    - position: {x: 0, y: 7.7777777, z: 0}
-      up: {x: 0, y: 0, z: -1}
-      forward: {x: 0, y: 1, z: 0}
-      color: {r: 1, g: 1, b: 1, a: 1}
-      size: 1
-      percent: 0.7777777777777778
-    - position: {x: 0, y: 8.888889, z: 0}
-      up: {x: 0, y: 0, z: -1}
-      forward: {x: 0, y: 1, z: 0}
-      color: {r: 1, g: 1, b: 1, a: 1}
-      size: 1
-      percent: 0.8888888888888888
     - position: {x: 0, y: 10, z: 0}
       up: {x: 0, y: 0, z: -1}
       forward: {x: 0, y: 1, z: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
-      size: 1
+      size: 0.5
       percent: 1
     optimizedIndices: 
     sampleMode: 0
@@ -710,7 +565,7 @@ MonoBehaviour:
     clipTo: 1
     loopSamples: 0
   originalSamplePercents: []
-  _sampleCount: 10
+  _sampleCount: 2
   _is2D: 0
   hasSamples: 1
   pointsDirty: 0000
@@ -1173,17 +1028,6 @@ SpriteShapeRenderer:
   m_LocalAABB:
     m_Center: {x: 4.9983993, y: 0.0021639168, z: -0.00005}
     m_Extent: {x: 5.2520075, y: 0.25446975, z: 0.00005}
---- !u!114 &1614855542604445568 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6699925285093423263, guid: 61aed0afae2864ce59cb73275aca6309, type: 3}
-  m_PrefabInstance: {fileID: 5373907078050254623}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 537683c5a624b4cfd80b3bbc142ca182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5373907078050254623
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,11 +49,14 @@ namespace RunUp.NPlayer {
         public void StartPlayer(bool playAnimation = false) {
             Debug.Log("[PlayerManager] StartPlayer");
 
+            PlacePlayer(playAnimation);
+            
             var virtualCamera = GameObject.Find("vcam1");
             var virtualCameraComponent = virtualCamera.gameObject.GetComponent<CinemachineVirtualCamera>();
-            virtualCameraComponent.Follow = _player.transform;
-
-            PlacePlayer(playAnimation);
+            
+            var playerTransform = _player.transform;
+            virtualCameraComponent.Follow = playerTransform;
+            virtualCameraComponent.LookAt = playerTransform;
         }
         
         private void PlacePlayer(bool playAnimation) {

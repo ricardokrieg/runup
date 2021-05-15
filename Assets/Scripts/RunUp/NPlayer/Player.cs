@@ -16,16 +16,9 @@ namespace RunUp.NPlayer {
             
             _splineFollower = GetComponent<SplineFollower>();
             _splineFollower.spline = splineComputer;
-            _splineFollower.Restart(); // TODO this is needed?
+            _splineFollower.RebuildImmediate();
 
             _animator = GetComponent<Animator>();
-            
-            // TODO why I need this? how :follow would be already set here?
-            if (_splineFollower.follow) {
-                StartMoving();
-            } else {
-                StopMoving();  
-            }
         }
 
         public void Initialize() {
