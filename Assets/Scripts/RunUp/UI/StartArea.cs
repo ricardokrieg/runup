@@ -24,7 +24,6 @@ namespace RunUp.UI {
         
         public override void OnPointerDown(PointerEventData eventData) {
             base.OnPointerDown(eventData);
-            gameObject.GetComponentInParent<Canvas>().enabled = false;
             
             NotifyObservers();
         }

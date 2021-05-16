@@ -12,6 +12,7 @@ namespace RunUp {
             Container.Instance.Bind<NLevel.ILevelChangeObservable>(NLevel.LevelManager.Instance);
             Container.Instance.Bind(NPlayer.PlayerManager.Instance);
             Container.Instance.Bind<NPoint.IPointManager>(NPoint.PointManager.Instance);
+            Container.Instance.Bind<NPoint.IPointObservable>(NPoint.PointManager.Instance);
             Container.Instance.Bind(Camera.main);
             
             Container.Instance.BindInitializable(NAudio.AudioSettings.Instance);

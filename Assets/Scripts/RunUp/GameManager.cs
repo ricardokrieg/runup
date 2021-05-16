@@ -51,12 +51,20 @@ namespace RunUp {
 
             switch (uiEvent.type) {
                 case UIEvent.Type.StartGame:
+                    // TODO program to interface
+                    FindObjectOfType<Menu>().HideMenu();
+                    FindObjectOfType<Menu>().ShowPointsPanel();
+                    
                     _playerManager.SpawnPlayer();
                     break;
                 case UIEvent.Type.NextLevel:
+                    FindObjectOfType<Menu>().ShowPointsPanel();
+                    
                     _levelManager.NextLevel();
                     break;
                 case UIEvent.Type.RestartGame:
+                    FindObjectOfType<Menu>().ShowPointsPanel();
+                    
                     _levelManager.LoadCurrentLevel();
                     break;
             }
@@ -116,6 +124,8 @@ namespace RunUp {
             yield return new WaitForSeconds(0.5f);
             
             SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            
+            FindObjectOfType<Menu>().HidePointsPanel();
         }
     }
 }
