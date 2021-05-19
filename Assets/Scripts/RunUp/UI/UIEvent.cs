@@ -4,6 +4,7 @@ namespace RunUp.UI {
             StartGame,
             RestartGame,
             NextLevel,
+            Claim,
         }
 
         public Type type;

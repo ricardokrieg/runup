@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Loss.unity
     guid: de3099d1daf33482bbebe13aa02dec44
   - enabled: 1
+    path: Assets/Scenes/Claim.unity
+    guid: 42b3d08a6b36a4fab858b9899787c783
+  - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 21c097150b4c343c499cd2a9c5d7df62
   - enabled: 1

@@ -54,18 +54,19 @@ namespace RunUp {
                     // TODO program to interface
                     FindObjectOfType<Menu>().HideMenu();
                     FindObjectOfType<Menu>().ShowPointsPanel();
-                    
                     _playerManager.SpawnPlayer();
                     break;
                 case UIEvent.Type.NextLevel:
                     FindObjectOfType<Menu>().ShowPointsPanel();
-                    
                     _levelManager.NextLevel();
                     break;
                 case UIEvent.Type.RestartGame:
                     FindObjectOfType<Menu>().ShowPointsPanel();
-                    
                     _levelManager.LoadCurrentLevel();
+                    break;
+                case UIEvent.Type.Claim:
+                    FindObjectOfType<Menu>().HideMenu();
+                    SceneManager.LoadSceneAsync("Claim", LoadSceneMode.Single);
                     break;
             }
         }
