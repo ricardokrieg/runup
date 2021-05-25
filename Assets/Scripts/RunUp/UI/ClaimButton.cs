@@ -1,44 +1,24 @@
-using System.Collections.Generic;
+using RunUp.NClaim;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace RunUp.UI {
-    public class ClaimButton : MonoBehaviour, IEventObservable {
-        private List<IEventObserver> _observers;
+    public class ClaimButton : MonoBehaviour {
+        private ClaimManager _claimManager;
         
         public void Start() {
-            _observers = new List<IEventObserver>();
-            
             // TODO program to interface
-            var observer = Container.Instance.Get<GameManager>();
-            Subscribe(observer);
+            _claimManager = Container.Instance.Get<ClaimManager>();
             
             GetComponent<Button>().onClick.AddListener(OnClick);
         }
 
-        public void Subscribe(IEventObserver observer) {
-            if (_observers.Contains(observer)) return;
-            
-            _observers.Add(observer);
-        }
-        
         private void OnClick() {
             Debug.Log("[ClaimButton] OnClick");
+            
+            if (!_claimManager.IsAvailable()) return;
 
-            // TODO check if the button keeps disabled forever
-            GetComponent<Button>().interactable = false;
-            NotifyObservers();
-        }
-        
-        private void NotifyObservers() {
-            foreach (var observer in _observers.ToArray()) {
-                if (!_observers.Contains(observer)) continue;
-                
-                var uiEvent = new UIEvent() {
-                    type = UIEvent.Type.Claim
-                };
-                observer.OnEvent(uiEvent);
-            }
+            _claimManager.ClaimPoints();
         }
     }
 }

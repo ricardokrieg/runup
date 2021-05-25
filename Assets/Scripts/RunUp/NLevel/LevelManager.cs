@@ -22,6 +22,11 @@ namespace RunUp.NLevel {
         public void LoadCurrentLevel() {
             LoadLevel(_store.LoadLevel());
         }
+        
+        public void ReloadCurrentLevel() {
+            _currentLevel = 0;
+            LoadCurrentLevel();
+        }
 
         public void NextLevel() {
             LoadLevel(_currentLevel + 1);

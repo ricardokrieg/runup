@@ -372,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456032, guid: 576c0f12a828ddd4db1d6d4401702701, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 456032, guid: 576c0f12a828ddd4db1d6d4401702701, type: 3}
       propertyPath: m_LocalPosition.z
@@ -481,7 +481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456032, guid: 576c0f12a828ddd4db1d6d4401702701, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 456032, guid: 576c0f12a828ddd4db1d6d4401702701, type: 3}
       propertyPath: m_LocalPosition.z
@@ -590,7 +590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 456032, guid: 576c0f12a828ddd4db1d6d4401702701, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 456032, guid: 576c0f12a828ddd4db1d6d4401702701, type: 3}
       propertyPath: m_LocalPosition.z
@@ -689,6 +689,7 @@ GameObject:
   - component: {fileID: 1758124613}
   - component: {fileID: 1758124612}
   - component: {fileID: 1758124611}
+  - component: {fileID: 1758124614}
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
@@ -848,6 +849,18 @@ RectTransform:
   m_AnchoredPosition: {x: 8.37, y: -0.71}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1758124614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758124610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011453619a344a2d8743be9e03785664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1922244875
 GameObject:
   m_ObjectHideFlags: 0

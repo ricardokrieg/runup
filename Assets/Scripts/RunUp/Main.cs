@@ -11,6 +11,7 @@ namespace RunUp {
             Container.Instance.Bind<NLevel.ILevelManager>(NLevel.LevelManager.Instance);
             Container.Instance.Bind<NLevel.ILevelChangeObservable>(NLevel.LevelManager.Instance);
             Container.Instance.Bind(NPlayer.PlayerManager.Instance);
+            Container.Instance.Bind(NClaim.ClaimManager.Instance);
             Container.Instance.Bind<NPoint.IPointManager>(NPoint.PointManager.Instance);
             Container.Instance.Bind<NPoint.IPointObservable>(NPoint.PointManager.Instance);
             Container.Instance.Bind(Camera.main);

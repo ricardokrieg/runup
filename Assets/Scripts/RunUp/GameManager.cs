@@ -64,10 +64,6 @@ namespace RunUp {
                     FindObjectOfType<Menu>().ShowPointsPanel();
                     _levelManager.LoadCurrentLevel();
                     break;
-                case UIEvent.Type.Claim:
-                    FindObjectOfType<Menu>().HideMenu();
-                    SceneManager.LoadSceneAsync("Claim", LoadSceneMode.Single);
-                    break;
             }
         }
         
