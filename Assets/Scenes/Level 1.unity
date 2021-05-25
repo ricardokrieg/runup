@@ -178,10 +178,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AntiClockwiseRotatingObstacle
       objectReference: {fileID: 0}
-    - target: {fileID: 4653652325717539299, guid: c3e1de24bf3234ea2a0a0f6549c42677, type: 3}
-      propertyPath: speedMultiplier
-      value: 0.8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3e1de24bf3234ea2a0a0f6549c42677, type: 3}
 --- !u!4 &242236941 stripped
@@ -310,10 +306,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 503641656}
     m_Modifications:
-    - target: {fileID: 3051360747029699561, guid: 8ec6caf63eac0464f983984831b3cfaa, type: 3}
-      propertyPath: speedMultiplier
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4922793232032190730, guid: 8ec6caf63eac0464f983984831b3cfaa, type: 3}
       propertyPath: m_RootOrder
       value: 1

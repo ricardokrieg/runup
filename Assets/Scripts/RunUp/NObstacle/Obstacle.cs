@@ -4,11 +4,14 @@ using UnityEngine;
 namespace RunUp.NObstacle {
     public class Obstacle : MonoBehaviour, ICollisionObservable {
         [SerializeField] private float speedMultiplier = 1;
+        [SerializeField] private ObstacleColor.ColorCategory colorCategory;
         
         private List<ICollisionObserver> _observers;
         
         public void Start() {
             _observers = new List<ICollisionObserver>();
+
+            GetComponent<SpriteRenderer>().color = ObstacleColor.Instance.GetColor(colorCategory);
         }
 
         public float GetSpeedMultiplier() {
